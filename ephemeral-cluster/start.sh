@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 # For aws cli version 1, please use: aws ecr get-login | sh
-aws ecr get-login-password | docker login -u AWS --password-stdin https://075790327284.dkr.ecr.ap-south-1.amazonaws.com
+aws ecr get-login-password | docker login -u AWS --password-stdin https://xxxxxxxx.dkr.ecr.ap-south-1.amazonaws.com
 
 # getting env secrets from secrets manager
-aws secretsmanager get-secret-value --secret-id $AZKABAN_ENV_SECRET_NAME > secrets
+aws secretsmanager get-secret-value --secret-id $secret-id variable > secrets
 
 
 awsClusterName=$1
