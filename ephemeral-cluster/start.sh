@@ -18,11 +18,11 @@ Task_Instances=$7
 aws emr create-cluster \
         --name "$awsClusterName" \
         --applications Name=Hadoop Name=Spark Name=Zeppelin \
-        --release-label emr-5.35.0 \
-        --service-role EMR_DefaultRole \
+        --release-label emr-5.35.0 \ #emr version 
+        --service-role EMR_DefaultRole \ #emr cluster role
         --instance-groups InstanceGroupType=MASTER,InstanceCount=1,InstanceType=$Master_InstanceType InstanceGroupType=CORE,InstanceCount=$Core_Instances,InstanceType=$Core_InstanceType InstanceGroupType=TASK,InstanceCount=$Task_Instances,InstanceType=$Task_InstanceType \
-        --log-uri 's3://aws-logs-272415727726-ap-south-1/elasticmapreduce/' \
-        --ec2-attributes '{"KeyName":"ad-tech-ec2-staging-instance","InstanceProfile":"EMR_EC2_DefaultRole","ServiceAccessSecurityGroup":"sg-0f44aae4cad5e0537","SubnetId":"subnet-0d734692f25de7ecd","EmrManagedSlaveSecurityGroup":"sg-02678a96fcd8c7347","EmrManagedMasterSecurityGroup":"sg-0e156b5f2e88eed5b"}' \
+        --log-uri 's3://aws-logs-xxxxx-ap-south-1/elasticmapreduce/' \
+        --ec2-attributes '{"KeyName":"filename.pem","InstanceProfile":"EMR_EC2_DefaultRole","ServiceAccessSecurityGroup":"sg-xxxxxx","SubnetId":"subnet-0xxxxx","EmrManagedSlaveSecurityGroup":"sg-0xxxxxxx","EmrManagedMasterSecurityGroup":"sg-0xxxxxx"}' \
         --region ap-south-1 \
         --auto-scaling-role EMR_AutoScaling_DefaultRole \
-        --auto-termination-policy IdleTimeout 7200
+        --auto-termination-policy IdleTimeout 7200 # time in minutes
